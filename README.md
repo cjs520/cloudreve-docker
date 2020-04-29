@@ -22,11 +22,17 @@ GitHub：[https://github.com/cloudreve/Cloudreve][2]
 运行模式
 
 Docker Run方式运行
+
 OC: 仅Cloudreve
+
 CAC: Caddy反代+Aria2离线下载服务+Cloudreve
+
 Docker Compose方式运行
+
 CAC: Caddy反代+Aria2离线下载服务+Cloudreve
+
 获取PUID和PGID
+
 为什么要使用PUID和PGID参见: Understanding PUID and PGID
 
 假设当前登陆用户为root，则执行
@@ -157,6 +163,11 @@ RPC Secret: 参见启动Aria2服务中的<SECRET>
 其他选项按照默认值即可
 测试连接并保存
 
+升级：
+```
+bash update.sh
+```
+然后重新执行docker
 
   [1]: https://cloudreve.org
   [2]: https://github.com/cloudreve/Cloudreve
