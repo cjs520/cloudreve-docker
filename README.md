@@ -50,7 +50,7 @@ GitHub：[https://github.com/cloudreve/Cloudreve][2]
 则PUID填入1000，PGID填入1001
 
 Docker Run方式运行
-OC
+# OC
 以/dockercnf/cloudreve为cloudreve配置目录
 
     mkdir -p /dockercnf/cloudreve/uploads \
@@ -84,9 +84,9 @@ TZ设置时区，默认值为Asia/Shanghai
 
 <PATH TO cloudreve.db>: 数据库文件
 
-CAC
+# CAC
 
-#VPS 一键脚本 
+## VPS 一键脚本 
 ```
 bash cloudreve_docker.sh
 ```
