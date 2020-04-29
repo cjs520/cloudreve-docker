@@ -1,4 +1,4 @@
-
+echo "VPS 一键安装配置cloudreve Docker版"
 tmp=1
 read -p "请选择你的系统类型, Centos输入 1 ，Ubuntu输入 2  : " tmp
 if [ "$tmp" == "1" ];then
