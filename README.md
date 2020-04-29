@@ -1,3 +1,4 @@
+
 Cloudreve Docker
     
 
@@ -13,9 +14,9 @@ Cloudreve Docker
 Cloudreve
 Cloudreve能助您以最低的成本快速搭建公私兼备的网盘系统。
 
-官方网站：https://cloudreve.org
+官方网站：[https://cloudreve.org][1]
 
-GitHub：https://github.com/cloudreve/Cloudreve
+GitHub：[https://github.com/cloudreve/Cloudreve][2]
 
 开始
 运行模式
@@ -30,30 +31,34 @@ CAC: Caddy反代+Aria2离线下载服务+Cloudreve
 
 假设当前登陆用户为root，则执行
 
-id root
+    id root
+
 就会得到类似于下面的一段代码
 
-uid=1000(root) gid=1001(root)
+    uid=1000(root) gid=1001(root)
+
 则PUID填入1000，PGID填入1001
 
 Docker Run方式运行
 OC
 以/dockercnf/cloudreve为cloudreve配置目录
-mkdir -p /dockercnf/cloudreve \
-    && touch /dockercnf/cloudreve/conf.ini \
-    && touch /dockercnf/cloudreve/cloudreve.db
 
-docker run -d \
-  --name cloudreve \
-  -e PUID=1000 \ # optional
-  -e PGID=1000 \ # optional
-  -e TZ="Asia/Shanghai" \ # optional
-  -p 5212:5212 \ 
-  --restart=unless-stopped \
-  -v <PATH TO UPLOADS>:/cloudreve/uploads \
-  -v <PATH TO conf.ini>:/cloudreve/conf.ini \
-  -v <PATH TO cloudreve.db>:/cloudreve/cloudreve.db \
-  cjs520/cloudreve-docker
+    mkdir -p /dockercnf/cloudreve \
+        && touch /dockercnf/cloudreve/conf.ini \
+        && touch /dockercnf/cloudreve/cloudreve.db
+
+    docker run -d \
+      --name cloudreve \
+      -e PUID=1000 \ # optional
+      -e PGID=1000 \ # optional
+      -e TZ="Asia/Shanghai" \ # optional
+      -p 5212:5212 \ 
+      --restart=unless-stopped \
+      -v <PATH TO UPLOADS>:/cloudreve/uploads \
+      -v <PATH TO conf.ini>:/cloudreve/conf.ini \
+      -v <PATH TO cloudreve.db>:/cloudreve/cloudreve.db \
+      cjs520/cloudreve-docker
+
 说明
 
 首次启动后请执行docker logs -f cloudreve获取初始密码
@@ -78,22 +83,24 @@ CAC
 一个域名并解析到运行Cloudreve的服务器，这里以cloudreve.example.com为例。
 Step1. 配置caddy
 
-wget https://raw.githubusercontent.com/cjs520/webbackup/master/caddy.sh&&bash caddy.sh
+    wget https://raw.githubusercontent.com/cjs520/webbackup/master/caddy.sh&&bash caddy.sh
+
 Step2. 启动Aria2服务（如不需要离线下载功能该步骤略过）
 
-docker run -d \
-    --name aria2 \
-    --restart unless-stopped \
-    --log-opt max-size=1m \
-    -e PUID=1000 \
-    -e PGID=1000 \
-    -e RPC_SECRET=<SECRET> \  #自己设定
-    -p 6800:6800 \ #1
-    -p 6888:6888 -p 6888:6888/udp \
-    --network my-network \
-    -v <PATH TO CONFIG>:/config \
-    -v <PATH TO TEMP>:/downloads \
-    p3terx/aria2-pro
+    docker run -d \
+        --name aria2 \
+        --restart unless-stopped \
+        --log-opt max-size=1m \
+        -e PUID=1000 \
+        -e PGID=1000 \
+        -e RPC_SECRET=<SECRET> \  #自己设定
+        -p 6800:6800 \ #1
+        -p 6888:6888 -p 6888:6888/udp \
+        --network my-network \
+        -v <PATH TO CONFIG>:/config \
+        -v <PATH TO TEMP>:/downloads \
+        p3terx/aria2-pro
+
 说明
 
 PUID以及PGID的获取方式详见获取PUID和PGID。
@@ -101,25 +108,27 @@ PUID以及PGID的获取方式详见获取PUID和PGID。
 <PATH TO CONFIG>: Aria2的配置文件夹，例如/dockercnf/aria2/conf。
 <PATH TO TEMP>: 临时下载文件夹，需要与Cloudreve的/downloads对应，例如/dockercnf/aria2/temp。
 如果不需要外网访问Aria2可以将#1所在行删除。
-Step5. 预创建Cloudreve的数据库和配置文件，这里以/dockercnf/cloudreve为cloudreve配置目录
+Step3. 预创建Cloudreve的数据库和配置文件，这里以/dockercnf/cloudreve为cloudreve配置目录
 
-mkdir -p /dockercnf/cloudreve \
-    && touch /dockercnf/cloudreve/conf.ini \
-    && touch /dockercnf/cloudreve/cloudreve.db
+    mkdir -p /dockercnf/cloudreve \
+        && touch /dockercnf/cloudreve/conf.ini \
+        && touch /dockercnf/cloudreve/cloudreve.db
+
 Step6. 启动Cloudreve
 
-docker run -d \
-  --name cloudreve \
-  -e PUID=1000 \ # optional
-  -e PGID=1000 \ # optional
-  -e TZ="Asia/Shanghai" \ # optional
-  --network my-network \
-  --restart=unless-stopped \
-  -v <PATH TO UPLOADS>:/cloudreve/uploads \
-  -v <PATH TO TEMP>:/downloads \ #1
-  -v <PATH TO conf.ini>:/cloudreve/conf.ini \
-  -v <PATH TO cloudreve.db>:/cloudreve/cloudreve.db \
-cjs520/cloudreve-docker
+    docker run -d \
+      --name cloudreve \
+      -e PUID=1000 \ # optional
+      -e PGID=1000 \ # optional
+      -e TZ="Asia/Shanghai" \ # optional
+      --network my-network \
+      --restart=unless-stopped \
+      -v <PATH TO UPLOADS>:/cloudreve/uploads \
+      -v <PATH TO TEMP>:/downloads \ #1
+      -v <PATH TO conf.ini>:/cloudreve/conf.ini \
+      -v <PATH TO cloudreve.db>:/cloudreve/cloudreve.db \
+    cjs520/cloudreve-docker
+
 说明
 
 首次启动后请执行docker logs -f cloudreve获取初始密码
@@ -147,3 +156,7 @@ RPC Secret: 参见启动Aria2服务中的<SECRET>
 临时下载地址: /downloads
 其他选项按照默认值即可
 测试连接并保存
+
+
+  [1]: https://cloudreve.org
+  [2]: https://github.com/cloudreve/Cloudreve
