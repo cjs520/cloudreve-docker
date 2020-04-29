@@ -94,7 +94,7 @@ bash cloudreve_docker.sh
 
 前提
 
-已安装docker，如果没有请执行wget -qO- https://get.docker.com/ | bash安装docker。
+已安装docker，如果没有请执行`wget -qO- https://get.docker.com/ | bash`安装docker。
 一个域名并解析到运行Cloudreve的服务器，这里以cloudreve.example.com为例。
 
 Step1. 配置caddy
