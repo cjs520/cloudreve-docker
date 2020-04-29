@@ -81,6 +81,10 @@ TZ设置时区，默认值为Asia/Shanghai
 <PATH TO cloudreve.db>: 数据库文件
 
 CAC
+#VPS 一键脚本 
+```
+bash cloudreve_docker.sh
+```
 ⚠️注意：此教程仅在linux/amd64架构测试，如果您正在使用arm架构，部分参数请根据实际情况调整。
 
 前提
