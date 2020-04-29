@@ -29,7 +29,7 @@ GitHub：[https://github.com/cloudreve/Cloudreve][2]
 
 - Docker Run方式运行
 
- -OC: 仅Cloudreve
+ - OC: 仅Cloudreve
 
 - CAC: Caddy反代+Aria2离线下载服务+Cloudreve
 
