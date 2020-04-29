@@ -1,47 +1,42 @@
 
-Cloudreve Docker
+# Cloudreve Docker
+
     
-（默认使用sqlite数据库 如需使用mysql，联系作者qq：2930755201)
+默认使用sqlite数据库 如需使用mysql，联系作者qq：2930755201)
     
-优势
 
-基于最新的Cloudreve V3
 
-长期维护
+- 基于最新的Cloudreve V3
+- 长期维护
+- 镜像体积小
+- 纯净安装，无多余组件
 
-镜像体积小
-
-纯净安装，无多余组件
-
-支持linux/amd64架构
+- 支持linux/amd64架构
 
 简易安装
 
 内含详细的Cloudreve+Caddy+Aria2部署教程
 
-Cloudreve
+##Cloudreve
 Cloudreve能助您以最低的成本快速搭建公私兼备的网盘系统。
 
 官方网站：[https://cloudreve.org][1]
 
 GitHub：[https://github.com/cloudreve/Cloudreve][2]
 
-开始
+##开始
 运行模式
 
-Docker Run方式运行
+- Docker Run方式运行
 
-OC: 仅Cloudreve
+ -OC: 仅Cloudreve
 
-CAC: Caddy反代+Aria2离线下载服务+Cloudreve
+- CAC: Caddy反代+Aria2离线下载服务+Cloudreve
 
-Docker Compose方式运行
+###获取PUID和PGID
 
-CAC: Caddy反代+Aria2离线下载服务+Cloudreve
+为什么要使用PUID和PGID参见: [Understanding PUID and PGID](https://docs.linuxserver.io/general/understanding-puid-and-pgid)
 
-获取PUID和PGID
-
-为什么要使用PUID和PGID参见: Understanding PUID and PGID
 
 假设当前登陆用户为root，则执行
 
