@@ -25,7 +25,7 @@ Cloudreve能助您以最低的成本快速搭建公私兼备的网盘系统。
 
 GitHub：[https://github.com/cloudreve/Cloudreve][2]
 
-##开始
+## 开始
 运行模式
 
 - Docker Run方式运行
@@ -34,7 +34,7 @@ GitHub：[https://github.com/cloudreve/Cloudreve][2]
 
 - CAC: Caddy反代+Aria2离线下载服务+Cloudreve
 
-###获取PUID和PGID
+### 获取PUID和PGID
 
 为什么要使用PUID和PGID参见: [Understanding PUID and PGID](https://docs.linuxserver.io/general/understanding-puid-and-pgid)
 
