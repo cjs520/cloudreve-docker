@@ -43,7 +43,7 @@ Docker Run方式运行
 OC
 以/dockercnf/cloudreve为cloudreve配置目录
 
-    mkdir -p /dockercnf/cloudreve \
+    mkdir -p /dockercnf/cloudreve/uploads \
         && touch /dockercnf/cloudreve/conf.ini \
         && touch /dockercnf/cloudreve/cloudreve.db
 
@@ -54,9 +54,9 @@ OC
       -e TZ="Asia/Shanghai" \ # optional
       -p 5212:5212 \ 
       --restart=unless-stopped \
-      -v <PATH TO UPLOADS>:/cloudreve/uploads \
-      -v <PATH TO conf.ini>:/cloudreve/conf.ini \
-      -v <PATH TO cloudreve.db>:/cloudreve/cloudreve.db \
+      -v /dockercnf/cloudreve/uploads:/cloudreve/uploads \
+      -v /dockercnf/cloudreve/conf.ini:/cloudreve/conf.ini \
+      -v /dockercnf/cloudreve/cloudreve.db:/cloudreve/cloudreve.db \
       cjs520/cloudreve-docker
 
 说明
@@ -111,7 +111,7 @@ PUID以及PGID的获取方式详见获取PUID和PGID。
 如果不需要外网访问Aria2可以将#1所在行删除。
 Step3. 预创建Cloudreve的数据库和配置文件，这里以/dockercnf/cloudreve为cloudreve配置目录
 
-    mkdir -p /dockercnf/cloudreve \
+    mkdir -p /dockercnf/cloudreve/uploads \
         && touch /dockercnf/cloudreve/conf.ini \
         && touch /dockercnf/cloudreve/cloudreve.db
 
@@ -122,13 +122,12 @@ Step6. 启动Cloudreve
       -e PUID=1000 \ # optional
       -e PGID=1000 \ # optional
       -e TZ="Asia/Shanghai" \ # optional
-      --network my-network \
+      -p 5212:5212 \ 
       --restart=unless-stopped \
-      -v <PATH TO UPLOADS>:/cloudreve/uploads \
-      -v <PATH TO TEMP>:/downloads \ #1
-      -v <PATH TO conf.ini>:/cloudreve/conf.ini \
-      -v <PATH TO cloudreve.db>:/cloudreve/cloudreve.db \
-    cjs520/cloudreve-docker
+      -v /dockercnf/cloudreve/uploads:/cloudreve/uploads \
+      -v /dockercnf/cloudreve/conf.ini:/cloudreve/conf.ini \
+      -v /dockercnf/cloudreve/cloudreve.db:/cloudreve/cloudreve.db \
+      cjs520/cloudreve-docker
 
 说明
 
