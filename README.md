@@ -1,16 +1,24 @@
 
 Cloudreve Docker
     
-
+（默认使用sqlite数据库 如需使用mysql，联系作者qq：2930755201)
+    
 优势
 
 基于最新的Cloudreve V3
+
 长期维护
+
 镜像体积小
+
 纯净安装，无多余组件
+
 支持linux/amd64架构
+
 简易安装
+
 内含详细的Cloudreve+Caddy+Aria2部署教程
+
 Cloudreve
 Cloudreve能助您以最低的成本快速搭建公私兼备的网盘系统。
 
