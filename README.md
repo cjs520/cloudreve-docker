@@ -167,7 +167,7 @@ RPC Secret: 参见启动Aria2服务中的<SECRET>
 ```
 bash update.sh
 ```
-然后重新执行docker
+
 
   [1]: https://cloudreve.org
   [2]: https://github.com/cloudreve/Cloudreve
