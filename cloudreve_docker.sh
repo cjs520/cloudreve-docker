@@ -29,6 +29,7 @@ docker run -itd --name=cloudreve -e PUID=1000   -e PGID=1000 -e TZ="Asia/Shangha
 echo "配置caddy反代"
 wget https://raw.githubusercontent.com/cjs520/webbackup/master/caddy.sh&&bash caddy.sh
 rm -rf caddy.sh
+docker network create my-network
 dir1=“/home/aria2”
 
 echo "docker运行aria2"
