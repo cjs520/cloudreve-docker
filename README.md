@@ -99,6 +99,7 @@ bash cloudreve_docker.sh
 
 Step1. 配置caddy
 
+    docker network create my-network
     wget https://raw.githubusercontent.com/cjs520/webbackup/master/caddy.sh&&bash caddy.sh
 
 Step2. 启动Aria2服务（如不需要离线下载功能该步骤略过）
