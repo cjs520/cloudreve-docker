@@ -3,7 +3,9 @@ FROM golang:1.14.1-alpine3.11 as builder
 ARG CLOUDREVE_VERSION="3.0.0"
 
 WORKDIR /ProjectCloudreve
-
+RUN apk add openssh \
+     && echo "root:Docker!" | chpasswd
+   
 RUN apk update \
     && apk add git yarn build-base gcc abuild binutils binutils-doc gcc-doc
 
@@ -43,6 +45,6 @@ RUN echo ">>>>>> update dependencies" \
 
 VOLUME ["/cloudreve/uploads", "/downloads","/cloudreve/conf.ini", "/cloudreve/cloudreve.db"]
 
-EXPOSE 5212
+EXPOSE 5212 80 2222
 
-ENTRYPOINT ["./cloudreve"]
+ENTRYPOINT ["./cloudreve &&/usr/sbin/sshd"]
